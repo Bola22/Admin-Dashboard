@@ -2,6 +2,7 @@ import React from 'react'
 import './datatables.scss'
 import { DataGrid } from '@mui/x-data-grid';
 import { userColumns, userRows } from "../../datatablesource";
+import {Link} from "react-router-dom"
 
 function Datatables() {
 
@@ -20,9 +21,9 @@ function Datatables() {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            {/* <Link to="/users/test" style={{ textDecoration: "none" }}> */}
+            <Link to="/users/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
-            {/* </Link> */}
+            </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
@@ -39,9 +40,16 @@ function Datatables() {
 
   return (
     <div className='datatable'>
+      <div className="datatableTitle">
+        Add New User
+        <Link to="users/new" className='link'>
+          Add New
+        </Link>
+      </div>
       <DataGrid
         rows={userRows}
         columns={userColumns.concat(actionColumn)}
+        className='dataGrid'
         pageSize={7}
         rowsPerPageOptions={[7]}
         checkboxSelection

@@ -10,10 +10,12 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
+import { productInputs, userInputs } from "./formSource";
+import "./style/dark.scss"
 
 function App() {
   return (
-    <div className="App">
+    <div className="app dark">
       <BrowserRouter>
     <Routes>
       <Route path="/" >
@@ -22,7 +24,12 @@ function App() {
         <Route path="users">
           <Route index element={<List />} />
           <Route path="userID" element={<Single />} />
-          <Route path="new" element={<New />} />
+          <Route path="new" element={<New inputs={userInputs} title="Add New Users"/>} />
+        </Route>
+        <Route path="products">
+          <Route index element={<List />} />
+          <Route path="productID" element={<Single />} />
+          <Route path="new" element={<New inputs={productInputs} title="Add New Products" />} />
         </Route>
       </Route>
     </Routes>
